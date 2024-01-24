@@ -1,10 +1,25 @@
-import requests
-import random
-import survey
-import html
-import sys
 import os
-from colorama import init, Back, Fore, Style
+import sys
+import html
+import random
+import platform
+clear_commands = {'Windows': 'cls', 'Darwin': 'clear', 'Linux': 'clear'}
+try:
+    import requests
+    import survey
+    from colorama import init, Back, Fore, Style
+    print("Checking Modules...")
+    os.system(clear_commands.get(platform.system(), 'clear'))
+except:
+    os.system(clear_commands.get(platform.system(), 'clear'))
+    print("Downloading The Required Module...")
+    os.system("pip install survey colorama --quiet")
+    import requests
+    import survey
+    from colorama import init, Back, Fore, Style
+    print("Done.")
+
+
 
 init(autoreset=True)
 
@@ -56,7 +71,7 @@ def play(cate, diff):
 
 if __name__ == "__main__":
     try:
-        os.system('cls')
+        os.system(clear_commands.get(platform.system(), 'clear'))
         print(f"{Style.BRIGHT}Welcome to the quiz, Please select a category to be quizzed:\n")
         categories = ['Computer Science 💻', 'General Knowledge 🧠', 'Books 📚', 'Film 🎬', 'Music 🎧', 'Vehicle 🏎️', 'Gadgets ⚙️  ( Only Easy Mode Avail Till Now )']
         cats = survey.routines.select(
